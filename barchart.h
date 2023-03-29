@@ -1,13 +1,12 @@
 /*
- Project 3  Animated Bar Chart
- File name: barchart.h Author: Arij Khan  NetId: akhan342  Course: CS 251
+ Animated Bar Chart
+ File name: barchart.h Author: Manuel Irungaray
  System: Visual Studio
 */
 
 #include <iostream>
 #include <algorithm>
 #include <map>
-#include "myrandom.h" // used in graders, do not remove
 #include "bar.h"
 
 using namespace std;
@@ -145,7 +144,6 @@ class BarChart {
     // BarChart.
     //
     virtual ~BarChart() {
-
         if(bars != NULL)
         {
             delete [] bars; 
@@ -156,15 +154,12 @@ class BarChart {
     
     // setFrame
     void setFrame(string frame) {
-    
         this->frame = frame; //setter
-        
     }
     
     // getFrame()
     // Returns the frame of the BarChart object.
     string getFrame() {
-        
         return frame; //getter
     }
 
@@ -202,7 +197,6 @@ class BarChart {
     // If i is out of bounds, the it throws an out_of_range error message:
     Bar& operator[](int i) {
         //Bar b;
-        
         // TO DO:  Write this function.
         //if i is out of bounds
         if(i < 0 || i >= this->size)
@@ -277,10 +271,7 @@ class BarChart {
             output << bars[i].getName() << " "<< bars[i].getValue() << endl; //prints the name and value 
             barstr = ""; 
             numberOfBoxes = 0; 
-        }
-
-
-       
+        }       
     }
     
 };
