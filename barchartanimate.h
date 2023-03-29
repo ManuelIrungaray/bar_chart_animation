@@ -1,6 +1,6 @@
 /*
- Project 3  Animated Bar Chart
- File name: barcharanimate.h Author: Arij Khan  NetId: akhan342  Course: CS 251
+ Animated Bar Chart
+ File name: barcharanimate.h Author: Manuel Irungaray
  System: Visual Studio
 */
 
@@ -12,7 +12,6 @@
 #include <map> 
 #include <vector>
 #include <unistd.h>
-#include "myrandom.h" // used by graders, do not remove
 #include "barchart.h"
   
 using namespace std;
@@ -34,13 +33,10 @@ class BarChartAnimate {
     int colorIndex; 
 
  public:
-
     // a parameterized constructor:
     // Like the ourvector, the barcharts C-array should be constructed here
     // with a capacity of 4.
     BarChartAnimate(string title, string xlabel, string source) {
-        
-        // TO DO:  Write this constructor.
         this->title = title; 
         this->xlabel = xlabel; 
         this->source = source; 
@@ -50,15 +46,11 @@ class BarChartAnimate {
         barcharts = new BarChart[4]; 
         
     }
-
-    
     // destructor:
     // Called automatically by C++ to free the memory associated
     // by BarChartAnimate.
     //
     virtual ~BarChartAnimate() {
-        
-        // TO DO:  Write this destructor.
         delete [] barcharts; 
         
     }
@@ -107,8 +99,6 @@ class BarChartAnimate {
     if(!file.fail()) {
         for(int i = 0; i < number; i++)
         {
-             
-
             getline(file, tempString, ','); //gets frame value
             
             bc.setFrame(tempString);   
@@ -121,7 +111,6 @@ class BarChartAnimate {
             getline(file, category); //gets the category 
             
             bc.addBar(barName, stoi(barValue), category); 
-            //cout << bc.getSize() << endl; 
             if(this->colorIndex == COLORS.size())
             {
                this->colorIndex = 0; //resets the index
@@ -162,7 +151,6 @@ class BarChartAnimate {
             endIter = size;  
         }
               
-
         for(int i = 0; i < endIter; i++)
         {
             usleep( 3 * microsecond); //set delay period
@@ -178,35 +166,6 @@ class BarChartAnimate {
         }
                 
 	}
-    
-
-   /*
-    CREATIVE COMPONENT
-    void creativeAnimate(ostream &output, int top, int endIter, unsigned int speed) {
-     
-		unsigned int microsecond = speed; //playback rate
-        if(endIter == -1)
-        {
-            endIter = size;  
-        }
-              
-
-        for(int i = 0; i < endIter; i++)
-        {
-            usleep( 3 * microsecond); //set delay period
-            output << CLEARCONSOLE; 
-      
-
-            output << WHITE << this->title << endl; //print title in black(read in application.cpp)
-            output << WHITE << this->source << endl; //print source in black(read in application.cp[])
-            barcharts[i].graph(cout, colorMap, top); //prints the graph of the bar chart
-            output << WHITE << this->xlabel << endl; //print label in black(read in application.cpp)
-            output << WHITE << "Frame: " << barcharts[i].getFrame() << endl; //print barChart frame in black
-            
-        }
-                
-	}
-    */
 
     //
     // Public member function.
@@ -221,7 +180,6 @@ class BarChartAnimate {
     // This gives public access to Bars stored in the Barchart.
     // If i is out of bounds, the it throws an out_of_range error message
     BarChart& operator[](int i){
-        // TO DO:  Write this function.
         if(i < 0 || i >= this->size)
         {
             throw out_of_range("BarChartAnimate: i out of bounds");  
