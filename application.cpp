@@ -1,6 +1,6 @@
 /*
- Project 3  Animated Bar Chart
- File name: application.cpp Author: Arij Khan  NetId: akhan342  Course: CS 251
+ Animated Bar Chart
+ File name: application.cpp Author: Manuel Irungaray
  System: Visual Studio
 */
 
@@ -14,15 +14,6 @@
 #include <map>
 #include "barchartanimate.h"
 using namespace std;
-
-/*
-Creative component:
-copy and paste this below and comment out "bca.animate(cout, 12, -1)" 
-bca.animate(cout, 12, -1, speed)
-
-Uncomment creativeAnimate function in barchartanimate and comment out animate function
-Creative component will change the playback rate to even a faster rate than the default rate
-*/
 
 int main() {
 	unsigned int speed = 25000; 
@@ -42,8 +33,6 @@ int main() {
 	while (!inFile.eof()) {
 		bca.addFrame(inFile);
 	}
-	
-	bca.animate(cout, 12, -1);
 
 	
 
