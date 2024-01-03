@@ -15,9 +15,10 @@
 #include "barchartanimate.h"
 using namespace std;
 
-int main() {
+int main(int argc, char * argv[] ) {
 	unsigned int speed = 25000; 
-	string filename = "cities.txt";
+	string filename = argv[1];
+	cout << "hi" << endl;
 	ifstream inFile(filename);
 	string title;
 	string line;
@@ -33,8 +34,6 @@ int main() {
 	while (!inFile.eof()) {
 		bca.addFrame(inFile);
 	}
-
-	
 
     return 0;
 }
