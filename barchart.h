@@ -108,9 +108,7 @@ class BarChart {
     // Called when you assign one BarChart into another, i.e. this = other;
     //
     BarChart& operator=(const BarChart& other) {
-        // if(bars != NULL){
-        //   delete [] bars;
-        // }
+
         delete [] bars;
 
         this->bars = new Bar[other.capacity]; //allocates space for how much ever capacity value is
@@ -169,11 +167,9 @@ class BarChart {
     // returns false if there is not room
     bool addBar(string name, int value, string category) {
         
-        // TO DO:  Write this function.
         if(size == capacity)
         {
-            //TEST CASE: UNCOMMENT WHEN TESTING
-           // cout << "CAPACITY REACHED" << endl;
+            cout << "CAPACITY REACHED" << endl;
             return false; 
         }
         else
@@ -197,7 +193,6 @@ class BarChart {
     // If i is out of bounds, the it throws an out_of_range error message:
     Bar& operator[](int i) {
         //Bar b;
-        // TO DO:  Write this function.
         //if i is out of bounds
         if(i < 0 || i >= this->size)
         {
@@ -205,7 +200,7 @@ class BarChart {
             exit(0); 
         }
         
-        return this->bars[i];  // TO DO:  update this, it is only here so code compiles.
+        return this->bars[i];  
     }
     
     // dump
@@ -249,11 +244,8 @@ class BarChart {
         int len = 0.0; 
         int numberOfBoxes = 0; //holds number of boxes (len)
          
-        // TO DO: read this example and this erase it.
-        // e.g. Here I am plotting 60 red BOXs to output
         for(int i = 0; i < top && i < size; i++)
         {
-            
           len = ((bars[i].getValue()+  0.0) / maxValue) * lenMax;  
           numberOfBoxes = len; 
           //if category is not found within color map and if map is empty, set the color to black/white
