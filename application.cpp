@@ -12,28 +12,28 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <string>
 #include "barchartanimate.h"
 using namespace std;
 
-int main(int argc, char * argv[] ) {
-	unsigned int speed = 25000; 
-	string filename = argv[1];
-	cout << "hi" << endl;
-	ifstream inFile(filename);
-	string title;
-	string line;
-	getline(inFile, title);
-	string xlabel;
-	getline(inFile, xlabel);
-	string source;
-	getline(inFile, source);
-	getline(inFile, line); //reads the empty line
+int main() {
+    unsigned int speed = 25000;
+    string filename = "cities.txt";
+    ifstream inFile(filename);
+    string title;
+    string line;
+    getline(inFile, title);
+    string xlabel;
+    getline(inFile, xlabel);
+    string source;
+    getline(inFile, source);
+    getline(inFile, line); //reads the empty line
+    BarChartAnimate bca(title, xlabel, source);
+    
+    while (!inFile.eof()) {
+        bca.addFrame(inFile);
+    }
 
-	BarChartAnimate bca(title, xlabel, source);
-	
-	while (!inFile.eof()) {
-		bca.addFrame(inFile);
-	}
-
+    bca.animate(std::cout, 10, -1 );
     return 0;
 }
