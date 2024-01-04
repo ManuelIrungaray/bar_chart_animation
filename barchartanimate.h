@@ -12,6 +12,8 @@
 #include <map> 
 #include <vector>
 #include <unistd.h>
+#include <cstdlib>
+#include <stdlib.h>
 #include "barchart.h"
   
 using namespace std;
@@ -60,8 +62,6 @@ class BarChartAnimate {
     //checks to see if array is ever full, if so we allocate more space for it
     //see if category is already in the map, if not add the category along with a color from the color vector 
     void addFrame(ifstream &file) {
-
-       
         if (size == capacity)
         {
             //doubling the array  
@@ -89,12 +89,10 @@ class BarChartAnimate {
         string barValue; 
         string category; 
         int number = 0; 
-        
-        
-        getline(file, line); //reads the first line 
+    
+        getline(file, line); //reads the first line
         number = stoi(line); //gets the number
-
-         BarChart bc(number); 
+        BarChart bc(number);
  
     if(!file.fail()) {
         for(int i = 0; i < number; i++)
@@ -129,8 +127,6 @@ class BarChartAnimate {
         barcharts[size] = bc; //adding the barchart object into the array
         size++; 
         getline(file, line); //reads the empty line
-        
-       
     }
       
 }
@@ -144,7 +140,7 @@ class BarChartAnimate {
     // in between each frame.
     
 	void animate(ostream &output, int top, int endIter) {
-     
+
 		unsigned int microsecond = 50000; //playback rate
         if(endIter == -1)
         {
@@ -154,15 +150,20 @@ class BarChartAnimate {
         for(int i = 0; i < endIter; i++)
         {
             usleep( 3 * microsecond); //set delay period
-            output << CLEARCONSOLE; 
-      
-
+            output << "\033c";
             output << WHITE << this->title << endl; //print title in black(read in application.cpp)
             output << WHITE << this->source << endl; //print source in black(read in application.cp[])
             barcharts[i].graph(cout, colorMap, top); //prints the graph of the bar chart
             output << WHITE << this->xlabel << endl; //print label in black(read in application.cpp)
             output << WHITE << "Frame: " << barcharts[i].getFrame() << endl; //print barChart frame in black
             
+        
+        
+//            cout << WHITE << this->title << endl; //print title in black(read in application.cpp)
+//            cout << WHITE << this->source << endl; //print source in black(read in application.cp[])
+//            barcharts[i].graph(cout, colorMap, top); //prints the graph of the bar chart
+//            cout << WHITE << this->xlabel << endl; //print label in black(read in application.cpp)
+//            cout << WHITE << "Frame: " << barcharts[i].getFrame() << endl; //print barChart frame in black
         }
                 
 	}
